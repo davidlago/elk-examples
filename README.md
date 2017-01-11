@@ -36,4 +36,4 @@ yellow open   bank                DO6cKfcWQTCXbqK0jnnGBg   5   1       1000     
 
 ```
 
-After this is done, you can navigate to `http://localhost:5601/` and you'll be greeted by the kibana home page.
+After this is done, you can navigate to [http://localhost:5601](http://localhost:5601) and you'll be greeted by the kibana home page.
