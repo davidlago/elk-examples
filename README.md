@@ -4,20 +4,32 @@ I'll use this repo to save my progress while playing around with the ELK stack.
 
 ### Setup
 
-You need to have [docker installed](https://docs.docker.com/engine/installation/). Clone the repo, and start this elk docker image:
+You need to have
+[docker installed](https://docs.docker.com/engine/installation/). You also need
+to increase the OS limit on nmap counts to at least `262144`. To do that once,
+run:
+
+```bash
+sudo sysctl -w vm.max_map_count=262144
+```
+
+You can also make this change permanent by updating the setting in
+`/etc/sysctl.conf`. Once this is done, start this elk docker image:
 
 ```bash
 docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk
 ```
 
-Look for a line similar to this in the running log to make sure the services are up an running in the container:
+Look for a line similar to this in the running log to make sure the services are
+up an running in the container:
 
 ```
 Successfully started Logstash API endpoint {:port=>9600}
 ```
 
-Leave that console window open, and in a new one run the following script that will load up the initial test data into the
-elasticsearch server:
+Leave that console window open, and in a new one clone this repo and run the
+following script that will load up the initial test data into the elasticsearch
+server:
 
 ```bash
 cd data && sh load.sh
@@ -36,4 +48,8 @@ yellow open   bank                DO6cKfcWQTCXbqK0jnnGBg   5   1       1000     
 
 ```
 
-After this is done, you can navigate to [http://localhost:5601](http://localhost:5601) and you'll be greeted by the kibana home page. At this point, you are all set to start the kibana tutorial from [this step](https://www.elastic.co/guide/en/kibana/current/tutorial-define-index.html) with all the initial setup already done.
+After this is done, you can navigate to
+[http://localhost:5601](http://localhost:5601) and you'll be greeted by the
+kibana home page. At this point, you are all set to start the kibana tutorial
+from [this step](https://www.elastic.co/guide/en/kibana/current/tutorial-define-index.html)
+with all the initial setup already done.
